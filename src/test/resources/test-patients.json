@@ -1,0 +1,38 @@
+[
+  {
+    "id": "ccbf8ccb-12b9-4f33-b5a2-cb2d38039d3e",
+    "identifiers": [
+      "41915278"
+    ],
+    "firstName": "Patient",
+    "lastName": "Alpha",
+    "dateOfBirth": "1980-01-10T00:00:00.000Z"
+  },
+  {
+    "id": "ccbf8ccb-12b9-4f33-b5a2-cb2d38039d3e",
+    "identifiers": [
+      "41915278"
+    ],
+    "firstName": "Patient",
+    "lastName": "Alpha",
+    "dateOfBirth": "1980-01-10T00:00:00.000Z"
+  },
+  {
+    "id": "9341fce0-5864-4b8a-a850-1ec0689482b3",
+    "identifiers": [
+      "41723788"
+    ],
+    "firstName": "Patient",
+    "lastName": "Beta",
+    "dateOfBirth": "1995-03-30T00:00:00.000Z"
+  },
+  {
+    "id": "9341fce0-5864-4b8a-a850-1ec0689482b3",
+    "identifiers": [
+      "41723788"
+    ],
+    "firstName": "Patient",
+    "lastName": "Beta",
+    "dateOfBirth": "1995-03-30T00:00:00.000Z"
+  }
+]

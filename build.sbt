@@ -1,3 +1,6 @@
+val circeV = "0.8.0"
+val kantanV = "0.3.0"
+
 lazy val nana = project.in(file("."))
   .settings(
     name := "nana",
@@ -20,6 +23,15 @@ lazy val nana = project.in(file("."))
       "-language:implicitConversions"
     ),
     libraryDependencies ++= Seq(
+      "ch.qos.logback" % "logback-classic" % "1.2.3",
+      "com.typesafe.scala-logging" %% "scala-logging" % "3.7.2",
+      "com.github.nscala-time" %% "nscala-time" % "2.18.0",
+      "com.nrinaudo" %% "kantan.csv" % kantanV,
+      "com.nrinaudo" %% "kantan.csv-generic" % kantanV,
+      "com.nrinaudo" %% "kantan.csv-joda-time" % kantanV,
+      "io.circe" %% "circe-core" % circeV,
+      "io.circe" %% "circe-generic" % circeV,
+      "io.circe" %% "circe-parser" % circeV,
       "org.scalatest" %% "scalatest" % "3.0.4" % Test
     )
   )
