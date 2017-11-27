@@ -20,6 +20,7 @@ class LabResultRepository(csvFile: URL) extends StrictLogging {
         .map { res =>
           res.map { row =>
             RawLabResult(
+              id = generateId(row),
               hospitalId = row(0),
               sampleId = row(1),
               date = DefaultDateFormatter.parseLocalDate(row(2)),
@@ -46,7 +47,16 @@ class LabResultRepository(csvFile: URL) extends StrictLogging {
         List.empty[RawLabResult]
     }
 
-  def toIterable: Iterable[RawLabResult] = repo
+  private def generateId(row: Vector[String]): String = {
+    val hospitalId = row(0)
+    val sampleId = row(1)
+    val profileCode = row(4)
+    val testName = row(30)
+    val date = DefaultDateFormatter.parseDateTime(row(2)).getMillis
+    s"$hospitalId-$sampleId-$profileCode-$testName-$date"
+  }
+
+  def list: Iterable[RawLabResult] = repo
 
   def findByHospitalId(hospitalId: String): List[RawLabResult] = {
     repo.filter(_.hospitalId.equalsIgnoreCase(hospitalId))

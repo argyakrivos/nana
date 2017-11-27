@@ -20,7 +20,7 @@ class LabResultCodeRepository(csvFile: URL) extends StrictLogging {
         List.empty[ResultCode]
     }
 
-  def toIterable: Iterable[ResultCode] = repo
+  def list: Iterable[ResultCode] = repo
 
   def findByKey(key: String): Option[ResultCode] = {
     repo.find(_.key.equalsIgnoreCase(key))

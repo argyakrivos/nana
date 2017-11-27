@@ -12,6 +12,11 @@ package model {
     description: Option[String]
   )
 
+  case class UpdateResultCode(
+    code: Option[String] = None,
+    description: Option[String] = None
+  )
+
   case class RawPatient(
     id: UUID,
     identifiers: List[String],
@@ -20,7 +25,15 @@ package model {
     dateOfBirth: DateTime
   )
 
+  case class UpdatePatient(
+    identifiers: Option[List[String]] = None,
+    firstName: Option[String] = None,
+    lastName: Option[String] = None,
+    dateOfBirth: Option[DateTime] = None
+  )
+
   case class RawLabResult(
+    id: String,
     hospitalId: String,
     sampleId: String,
     date: LocalDate,
@@ -31,6 +44,19 @@ package model {
     unit: String,
     lower: Option[Double],
     upper: Option[Double]
+  )
+
+  case class UpdateLabResult(
+    hospitalId: Option[String] = None,
+    sampleId: Option[String] = None,
+    date: Option[LocalDate] = None,
+    profileName: Option[String] = None,
+    profileCode: Option[String] = None,
+    value: Option[String] = None,
+    testName: Option[String] = None,
+    unit: Option[String] = None,
+    lower: Option[Double] = None,
+    upper: Option[Double] = None
   )
 
   case class Profile(name: String, code: String)

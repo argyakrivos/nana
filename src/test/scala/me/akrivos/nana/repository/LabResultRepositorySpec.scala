@@ -14,12 +14,13 @@ class LabResultRepositorySpec extends FlatSpecLike with Matchers {
   behavior of "LabResultRepository"
 
   it should "have 6 entries" in new TestFixture {
-    repo.toIterable should have size 6
+    repo.list should have size 6
   }
 
   it should "find test results by hospitalId" in new TestFixture {
     repo.findByHospitalId("41915278") shouldBe List(
       RawLabResult(
+        id = "41915278-41860BONALP~55-BON-ALP-1407542400000",
         hospitalId = "41915278",
         sampleId = "41860BONALP~55",
         date = LocalDate.parse("2014-08-09"),
@@ -32,6 +33,7 @@ class LabResultRepositorySpec extends FlatSpecLike with Matchers {
         upper = Some(104.0)
       ),
       RawLabResult(
+        id = "41915278-41860BONALP~55-BON-ALB-1407542400000",
         hospitalId = "41915278",
         sampleId = "41860BONALP~55",
         date = LocalDate.parse("2014-08-09"),
@@ -44,6 +46,7 @@ class LabResultRepositorySpec extends FlatSpecLike with Matchers {
         upper = Some(50.0)
       ),
       RawLabResult(
+        id = "41915278-41860BONALP~55-BON-CA-1407542400000",
         hospitalId = "41915278",
         sampleId = "41860BONALP~55",
         date = LocalDate.parse("2014-08-09"),
@@ -56,6 +59,7 @@ class LabResultRepositorySpec extends FlatSpecLike with Matchers {
         upper = Some(2.6)
       ),
       RawLabResult(
+        id = "41915278-41860BONALP~55-BON-xCCA-1407542400000",
         hospitalId = "41915278",
         sampleId = "41860BONALP~55",
         date = LocalDate.parse("2014-08-09"),
@@ -68,6 +72,7 @@ class LabResultRepositorySpec extends FlatSpecLike with Matchers {
         upper = Some(2.6)
       ),
       RawLabResult(
+        id = "41915278-41860BONALP~55-BON-PHOS-1407542400000",
         hospitalId = "41915278",
         sampleId = "41860BONALP~55",
         date = LocalDate.parse("2014-08-09"),
@@ -87,12 +92,13 @@ class LabResultRepositorySpec extends FlatSpecLike with Matchers {
   }
 
   it should "have no entries if there is an error during parsing" in new TestFixture("/idonotexist.csv") {
-    repo.toIterable shouldBe empty
+    repo.list shouldBe empty
   }
 
   it should "not contain duplicates" in new TestFixture {
     repo.findByHospitalId("40681650") shouldBe List(
       RawLabResult(
+        id = "40681650-41860BONALP~55-BON-PHOS-1407542400000",
         hospitalId = "40681650",
         sampleId = "41860BONALP~55",
         date = LocalDate.parse("2014-08-09"),

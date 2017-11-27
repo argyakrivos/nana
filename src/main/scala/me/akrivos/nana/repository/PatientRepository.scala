@@ -24,7 +24,7 @@ class PatientRepository(jsonFile: URL) extends StrictLogging {
         List.empty[RawPatient]
     }
 
-  def toIterable: Iterable[RawPatient] = repo
+  def list: Iterable[RawPatient] = repo
 
   def findById(id: UUID): Option[RawPatient] = {
     repo.find(_.id == id)

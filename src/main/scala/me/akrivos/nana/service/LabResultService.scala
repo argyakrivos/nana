@@ -26,7 +26,7 @@ class LabResultService(
           .map {
             case ((date, profileName, profileCode), results) =>
               LabResult(
-                timestamp = date.toDateTime(LocalTime.MIDNIGHT, DateTimeZone.UTC),
+                timestamp = date.toDateTime(LocalTime.Midnight, DateTimeZone.UTC),
                 profile = Profile(
                   name = profileName,
                   code = profileCode

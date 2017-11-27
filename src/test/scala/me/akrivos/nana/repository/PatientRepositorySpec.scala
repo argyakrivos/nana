@@ -16,7 +16,7 @@ class PatientRepositorySpec extends FlatSpecLike with Matchers with OptionValues
   behavior of "PatientRepository"
 
   it should "have 4 entries" in new TestFixture {
-    repo.toIterable should have size 4
+    repo.list should have size 4
   }
 
   it should "find patient by id" in new TestFixture {
@@ -35,11 +35,11 @@ class PatientRepositorySpec extends FlatSpecLike with Matchers with OptionValues
   }
 
   it should "have no entries if there is an error during parsing" in new TestFixture("/idonotexist.json") {
-    repo.toIterable shouldBe empty
+    repo.list shouldBe empty
   }
 
   it should "not contain duplicates" in new TestFixture("/test-patients.json") {
-    repo.toIterable.toList should contain theSameElementsAs List(
+    repo.list.toList should contain theSameElementsAs List(
       RawPatient(
         id = UUID.fromString("ccbf8ccb-12b9-4f33-b5a2-cb2d38039d3e"),
         identifiers = List("41915278"),
