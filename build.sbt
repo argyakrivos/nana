@@ -23,6 +23,7 @@ lazy val nana = project.in(file("."))
       "-language:reflectiveCalls",
       "-language:implicitConversions"
     ),
+    coverageExcludedPackages := ".*Main.*",
     libraryDependencies ++= Seq(
       "ch.qos.logback" % "logback-classic" % "1.2.3",
       "com.typesafe.scala-logging" %% "scala-logging" % "3.7.2",

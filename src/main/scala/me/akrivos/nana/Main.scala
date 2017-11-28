@@ -48,11 +48,12 @@ object Main extends App with StrictLogging {
   implicit val mat = ActorMaterializer()
   implicit val ec = system.dispatcher
 
-  val api = new Api()
+  val api = new Api(labResultCodeRepo, labResultRepo, patientRepo, labResultService)
 
   Http().bindAndHandle(api.route, "0.0.0.0", 8080).onComplete {
     case Success(binding) =>
-      logger.info(s"Service bound to ${binding.localAddress.getHostString}:${binding.localAddress.getPort}")
+      val address = binding.localAddress
+      logger.info(s"Service bound to ${address.getHostString}:${address.getPort}")
     case x =>
       logger.error(s"Unexpected HTTP bind result: $x")
       sys.exit(1)
