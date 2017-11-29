@@ -6,6 +6,14 @@ import com.github.nscala_time.time.Imports._
 
 package model {
 
+  case class UserInfo(
+    name: String,
+    username: String,
+    givenName: String,
+    familyName: String,
+    email: String
+  )
+
   case class ResultCode(
     key: String,
     code: Option[String],

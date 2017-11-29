@@ -37,6 +37,8 @@ lazy val nana = project.in(file("."))
       "com.typesafe.akka" %% "akka-http" % akkaHttpV,
       "com.typesafe.akka" %% "akka-slf4j" % "2.4.19",
       "de.heikoseeberger" %% "akka-http-circe" % "1.18.0",
+      "com.auth0" % "java-jwt" % "3.3.0",
+      "com.auth0" % "jwks-rsa" % "0.3.0",
       "org.scalatest" %% "scalatest" % "3.0.4" % Test,
       "com.typesafe.akka" %% "akka-http-testkit" % akkaHttpV % Test
     )

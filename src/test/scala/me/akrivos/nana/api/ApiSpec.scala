@@ -4,6 +4,7 @@ package api
 import java.util.UUID
 
 import akka.http.scaladsl.model.StatusCodes._
+import akka.http.scaladsl.server.directives.Credentials
 import akka.http.scaladsl.testkit.ScalatestRouteTest
 import com.github.nscala_time.time.Imports._
 import de.heikoseeberger.akkahttpcirce.FailFastCirceSupport
@@ -20,7 +21,9 @@ class ApiSpec extends FlatSpecLike with Matchers with ScalatestRouteTest with Fa
     val labResultRepo     = new LabResultRepository(getClass.getResource("/test-results.csv"))
     val patientRepo       = new PatientRepository(getClass.getResource("/test-patients.json"))
     val labResultService  = new LabResultService(labResultCodeRepo, labResultRepo, patientRepo)
-    val route             = new Api(labResultCodeRepo, labResultRepo, patientRepo, labResultService).route
+    val realm             = "interview"
+    val auth              = (_: Credentials) => Some(UserInfo("User Test", "user", "User", "Test", "user@test.com"))
+    val route             = new Api(labResultCodeRepo, labResultRepo, patientRepo, labResultService, realm, auth).route
   }
 
   behavior of "API"
