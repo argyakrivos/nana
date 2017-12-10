@@ -151,13 +151,13 @@ class Api(
                 labResultRepo.list
               }
             } ~
-              post {
-                entity(as[RawLabResult]) { entity =>
-                  complete {
-                    if (labResultRepo.insert(entity)) Created else Conflict
-                  }
+            post {
+              entity(as[RawLabResult]) { entity =>
+                complete {
+                  if (labResultRepo.insert(entity)) Created else Conflict
                 }
               }
+            }
           } ~
           path(Segment) { id =>
             get {
